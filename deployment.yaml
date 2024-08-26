@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+  labels:
+    app: python-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-deployment
+  template:
+    metadata:
+      labels:
+        app: python-deployment
+    spec:
+      containers:
+      - name: python-deployment
+        image: registry.digitalocean.com/leotest/pytest:v2
+        ports:
+        - containerPort: 80
